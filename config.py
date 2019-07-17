@@ -17,6 +17,14 @@ LEVEL: Level = [
             )
         ], []
     ), Level(
+        Point(WIDTH / 8, HEIGHT * 3 / 4), Point(WIDTH / 8, HEIGHT / 4), [
+            Obstacle(
+                Point(0, HEIGHT / 2 - 5), Point(WIDTH * 7 / 8, HEIGHT / 2 + 5)
+            )
+        ], [
+            Point(WIDTH * 15 / 16, HEIGHT / 2)
+        ]
+    ), Level(
         Point(WIDTH / 2, HEIGHT - 10), Point(WIDTH / 2, 10), [
             Obstacle(
                 Point(0, HEIGHT / 4 - 5),
@@ -43,4 +51,4 @@ LEVEL: Level = [
             Point(WIDTH / 2, HEIGHT * 5.5 / 8)
         ]
     )
-][1]
+][0]
