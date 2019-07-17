@@ -1,6 +1,7 @@
 import random
 from typing import List
 
+from config import CHECKPOINT_OPTIMIZATION_ROUNDS
 from dot import Dot
 from game import Game
 
@@ -72,7 +73,7 @@ class Population:
                     self.game.current_target += 1
                     self.game.target_countdown = None
             elif not self.best_dot.reached_final_goal and self.best_dot.reached_goal:
-                self.game.target_countdown: int = 20
+                self.game.target_countdown: int = CHECKPOINT_OPTIMIZATION_ROUNDS
 
             if self.game.target_countdown:
                 print(f"  Optimizing this checkpoint for {self.game.target_countdown} more generations")
