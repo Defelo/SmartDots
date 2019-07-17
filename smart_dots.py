@@ -4,9 +4,8 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+from config import *
 from dot import Dot
-from game import Game
-from obstacle import Obstacle
 from population import Population
 from vector import Point
 
@@ -18,39 +17,9 @@ class SmartDots(QWidget):
         super().__init__()
 
         self.setWindowTitle("Smart Dots")
-        self.setFixedSize(640, 480)
+        self.setFixedSize(WIDTH, HEIGHT)
 
-        self.population: Population = Population(
-            Game(
-                self.width(), self.height(),
-                Point(self.width() / 2, self.height() - 10), Point(self.width() / 2, 10), [
-                    Obstacle(
-                        Point(0, self.height() / 4 - 5),
-                        Point(self.width() * 3 / 4 + 5, self.height() / 4 + 5)
-                    ), Obstacle(
-                        Point(self.width() * 3 / 4 - 5, self.height() / 4 - 5),
-                        Point(self.width() * 3 / 4 + 5, self.height() * 5 / 8 - 5)
-                    ), Obstacle(
-                        Point(self.width() * 3 / 8, self.height() * 5 / 8 - 5),
-                        Point(self.width() * 3 / 4 + 5, self.height() * 5 / 8 + 5)
-                    ), Obstacle(
-                        Point(self.width() / 4, self.height() * 3 / 8 - 5),
-                        Point(self.width() * 5 / 8, self.height() * 3 / 8 + 5)
-                    ), Obstacle(
-                        Point(self.width() / 4 - 5, self.height() * 3 / 8 - 5),
-                        Point(self.width() / 4 + 5, self.height() * 3 / 4 + 5)
-                    ), Obstacle(
-                        Point(self.width() / 4 - 5, self.height() * 3 / 4 - 5),
-                        Point(self.width(), self.height() * 3 / 4 + 5)
-                    )
-                ], [
-                    Point(self.width() / 2, self.height() * 2.5 / 8),
-                    Point(self.width() / 2, self.height() * 4 / 8),
-                    Point(self.width() / 2, self.height() * 5.5 / 8)
-                ]
-            ),
-            1000
-        )
+        self.population: Population = Population(LEVEL.make_game(WIDTH, HEIGHT), POPULATION_SIZE)
         self.timer: QBasicTimer = QBasicTimer()
         self.timer.start(10, self)
 
